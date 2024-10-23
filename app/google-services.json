@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "943364086394",
+    "project_id": "smartwatering-4fe6a",
+    "storage_bucket": "smartwatering-4fe6a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:943364086394:android:2363b3a39ab2b80b8c39c3",
+        "android_client_info": {
+          "package_name": "com.minhdn.smartwatering"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCP4UBrXVB7dVCdnf5QiEHa4dqOXokEV3Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
