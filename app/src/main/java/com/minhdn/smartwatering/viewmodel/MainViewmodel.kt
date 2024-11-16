@@ -37,6 +37,10 @@ class MainViewModel : ViewModel() {
         val databaseAuto: DatabaseReference = FirebaseHelper.getDatabaseReference("is_auto")
         databaseAuto.setValue(!_isAuto.value)
         _isAuto.value = !_isAuto.value
+
+        if (!_isAuto.value && _isPump.value) {
+            togglePump()
+        }
     }
 
     fun togglePump() {

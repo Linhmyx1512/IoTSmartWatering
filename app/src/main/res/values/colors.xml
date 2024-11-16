@@ -4,5 +4,9 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="main_color">#2DD84E</color>
-    <color name="gray">#868282</color>
+    <color name="gray">#A09D9D</color>
+    <color name="purple">#C090ED</color>
+    <color name="blue">#56A6F4</color>
+    <color name="reed">#F04437</color>
+    <color name="orange">#F0692E</color>
 </resources>

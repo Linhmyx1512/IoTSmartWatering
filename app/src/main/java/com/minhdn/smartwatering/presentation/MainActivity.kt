@@ -2,6 +2,7 @@ package com.minhdn.smartwatering.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -34,28 +35,32 @@ class MainActivity : AppCompatActivity() {
 
         updateUI()
         replaceFragment(listFragment[0])
-    }   
+    }
 
     private fun updateUI() {
-        binding.bottomNav.setOnNavigationItemSelectedListener {
-            when (it.itemId) {
-                R.id.homeFragment -> {
-                    replaceFragment(listFragment[0])
-                }
+        binding.bottomNav.apply {
+            setOnNavigationItemSelectedListener {
+                when (it.itemId) {
+                    R.id.homeFragment -> {
+                        replaceFragment(listFragment[0])
+                    }
 
-                R.id.weatherFragment -> {
-                    replaceFragment(listFragment[1])
-                }
+                    R.id.weatherFragment -> {
+                        replaceFragment(listFragment[1])
+                    }
 
-                R.id.historyFragment -> {
-                    replaceFragment(listFragment[2])
-                }
+                    R.id.historyFragment -> {
+                        replaceFragment(listFragment[2])
+                    }
 
-                R.id.settingFragment -> {
-                    replaceFragment(listFragment[3])
+                    R.id.settingFragment -> {
+                        replaceFragment(listFragment[3])
+                    }
                 }
+                true
             }
-            true
+            // bg transparent
+            setBackgroundColor(ContextCompat.getColor(context, android.R.color.transparent))
         }
     }
 
