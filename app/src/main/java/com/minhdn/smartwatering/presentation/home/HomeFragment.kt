@@ -10,7 +10,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.minhdn.smartwatering.R
 import com.minhdn.smartwatering.databinding.FragmentHomeBinding
-import com.minhdn.smartwatering.viewmodel.MainViewModel
 import kotlinx.coroutines.launch
 
 
@@ -20,7 +19,7 @@ class HomeFragment : Fragment() {
         FragmentHomeBinding.inflate(layoutInflater)
     }
 
-    private val viewModel: MainViewModel by viewModels()
+    private val viewModel: HomeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

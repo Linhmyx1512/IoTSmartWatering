@@ -1,4 +1,4 @@
-package com.minhdn.smartwatering.viewmodel
+package com.minhdn.smartwatering.presentation.home
 
 import androidx.lifecycle.ViewModel
 import com.google.firebase.database.DataSnapshot
@@ -9,7 +9,7 @@ import com.minhdn.smartwatering.data.firebase.FirebaseHelper
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
-class MainViewModel : ViewModel() {
+class HomeViewModel : ViewModel() {
 
     private val _humidity = MutableStateFlow(0f)
     val humidity: StateFlow<Float> = _humidity
