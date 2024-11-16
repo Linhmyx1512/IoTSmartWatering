@@ -1,7 +1,8 @@
- plugins {
+plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("com.google.gms.google-services")
+    id ("kotlin-kapt")
 }
 
 android {
@@ -52,6 +53,12 @@ dependencies {
     //import the BoM for the Firebase platform
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.database)
+
+    //room
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    //noinspection KaptUsageInsteadOfKsp
+    kapt(libs.room.compiler)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
