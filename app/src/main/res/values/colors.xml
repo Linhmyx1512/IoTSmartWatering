@@ -9,4 +9,7 @@
     <color name="blue">#56A6F4</color>
     <color name="reed">#F04437</color>
     <color name="orange">#F0692E</color>
+
+    // notification
+    <color name="text_notification">#222222</color>
 </resources>

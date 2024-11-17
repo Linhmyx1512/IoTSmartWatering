@@ -6,6 +6,12 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.minhdn.smartwatering.data.firebase.FirebaseHelper
+import com.minhdn.smartwatering.utils.Constants.HUMIDITY
+import com.minhdn.smartwatering.utils.Constants.IS_AUTO
+import com.minhdn.smartwatering.utils.Constants.IS_PUMP_ON
+import com.minhdn.smartwatering.utils.Constants.SENSOR_DATA
+import com.minhdn.smartwatering.utils.Constants.SOIL_MOISTURE
+import com.minhdn.smartwatering.utils.Constants.TEMPERATURE
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
@@ -34,7 +40,7 @@ class HomeViewModel : ViewModel() {
     }
 
     fun toggleAuto() {
-        val databaseAuto: DatabaseReference = FirebaseHelper.getDatabaseReference("is_auto")
+        val databaseAuto: DatabaseReference = FirebaseHelper.getDatabaseReference(IS_AUTO)
         databaseAuto.setValue(!_isAuto.value)
         _isAuto.value = !_isAuto.value
 
@@ -44,13 +50,13 @@ class HomeViewModel : ViewModel() {
     }
 
     fun togglePump() {
-        val databasePush: DatabaseReference = FirebaseHelper.getDatabaseReference("is_pump_on")
+        val databasePush: DatabaseReference = FirebaseHelper.getDatabaseReference(IS_PUMP_ON)
         databasePush.setValue(!_isPump.value)
         _isPump.value = !_isPump.value
     }
 
     private fun fetchPushStatus() {
-        val databasePush: DatabaseReference = FirebaseHelper.getDatabaseReference("is_pump_on")
+        val databasePush: DatabaseReference = FirebaseHelper.getDatabaseReference(IS_PUMP_ON)
         databasePush.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 _isPump.value = snapshot.getValue(Boolean::class.java) ?: false
@@ -63,7 +69,7 @@ class HomeViewModel : ViewModel() {
     }
 
     private fun fetchAutoStatus() {
-        val databaseAuto: DatabaseReference = FirebaseHelper.getDatabaseReference("is_auto")
+        val databaseAuto: DatabaseReference = FirebaseHelper.getDatabaseReference(IS_AUTO)
         databaseAuto.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 _isAuto.value = snapshot.getValue(Boolean::class.java) ?: false
@@ -76,13 +82,13 @@ class HomeViewModel : ViewModel() {
     }
 
     private fun fetchSensorData() {
-        val databaseSensor: DatabaseReference = FirebaseHelper.getDatabaseReference("sensor_data")
+        val databaseSensor: DatabaseReference = FirebaseHelper.getDatabaseReference(SENSOR_DATA)
         databaseSensor.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                _humidity.value = snapshot.child("humidity").getValue(Float::class.java) ?: 0f
+                _humidity.value = snapshot.child(HUMIDITY).getValue(Float::class.java) ?: 0f
                 _soilMoisture.value =
-                    snapshot.child("soil_moisture").getValue(Float::class.java) ?: 0f
-                _temperature.value = snapshot.child("temperature").getValue(Float::class.java) ?: 0f
+                    snapshot.child(SOIL_MOISTURE).getValue(Float::class.java) ?: 0f
+                _temperature.value = snapshot.child(TEMPERATURE).getValue(Float::class.java) ?: 0f
             }
 
             override fun onCancelled(error: DatabaseError) {

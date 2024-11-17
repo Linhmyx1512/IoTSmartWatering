@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("com.google.gms.google-services")
     id ("kotlin-kapt")
+    // parcelize
+    id("kotlin-parcelize")
 }
 
 android {
@@ -59,6 +61,10 @@ dependencies {
     implementation(libs.room.ktx)
     //noinspection KaptUsageInsteadOfKsp
     kapt(libs.room.compiler)
+
+    // dimen
+    implementation(libs.sdp)
+    implementation(libs.ssp)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
