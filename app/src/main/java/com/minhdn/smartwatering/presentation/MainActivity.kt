@@ -22,9 +22,9 @@ class MainActivity : AppCompatActivity() {
 
     private val listFragment = listOf(
         HomeFragment(),
-        SettingFragment(),
+        WeatherFragment(),
         HistoryFragment(),
-        WeatherFragment()
+        SettingFragment()
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
