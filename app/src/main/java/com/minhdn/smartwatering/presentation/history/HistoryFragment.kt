@@ -1,13 +1,13 @@
 package com.minhdn.smartwatering.presentation.history
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.minhdn.smartwatering.data.local.entity.HistoryEntity
-import com.minhdn.smartwatering.data.local.repo.HistoryRepository
 import com.minhdn.smartwatering.databinding.FragmentHistoryBinding
 import kotlinx.coroutines.launch
 
@@ -17,7 +17,11 @@ class HistoryFragment : Fragment() {
         FragmentHistoryBinding.inflate(layoutInflater)
     }
 
-    private val repository = HistoryRepository()
+    private val adapter by lazy {
+        HistoryAdapter()
+    }
+
+    private val viewModel by viewModels<HistoryViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,18 +30,21 @@ class HistoryFragment : Fragment() {
         return binding.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initUI()
+        observeViewModel()
+    }
 
-        binding.tvAdd.setOnClickListener {
-            val historyEntity = HistoryEntity(
-                id = 0,
-                time = System.currentTimeMillis(),
-                content = "This is a history"
-            )
-            viewLifecycleOwner.lifecycleScope.launch {
-                repository.insertHistory(historyEntity)
+    private fun initUI() {
+        binding.rvHistory.adapter = adapter
+    }
+
+    private fun observeViewModel() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.histories.collect { histories ->
+                Log.d("myptl", "observeViewModel: $histories")
+                adapter.submitList(histories)
             }
         }
     }

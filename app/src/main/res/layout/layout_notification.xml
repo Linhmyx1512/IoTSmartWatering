@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/_16sdp">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textAlignment="viewStart"
+        android:textColor="@color/text_notification"
+        android:textSize="@dimen/_12ssp"
+        android:textStyle="bold"
+        tools:text="@string/title_start_watering" />
+
+    <TextView
+        android:id="@+id/tvContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:maxLength="200"
+        android:textColor="@color/text_notification"
+        android:textSize="@dimen/_12ssp"
+        tools:text="@string/content_start_watering" />
+
+</LinearLayout>
