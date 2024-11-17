@@ -6,9 +6,11 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.Priority
 import com.google.android.gms.tasks.CancellationTokenSource
 import com.minhdn.smartwatering.data.model.CurrentLocation
+import com.minhdn.smartwatering.data.model.RemoteWeatherData
+import com.minhdn.smartwatering.data.remote.WeatherService
 import java.lang.StringBuilder
 
-class WeatherDataRepository {
+class WeatherDataRepository(private val weatherService: WeatherService) {
 
     @SuppressLint("MissingPermission")
     fun getCurrentLocation(
@@ -39,11 +41,17 @@ class WeatherDataRepository {
         return geocoder.getFromLocation(latitude, longitude, 1)?.let {addresses ->
             val address =  addresses[0]
             val addressText = StringBuilder()
+            addressText.append(address.subAdminArea).append(", ")
             addressText.append(address.adminArea).append(", ")
             addressText.append(address.countryName)
             currentLocation.copy(
                 location = addressText.toString()
             )
         } ?: currentLocation
+    }
+
+    suspend fun getWeatherData(latitude: Double, longitude: Double): RemoteWeatherData? {
+        val response = weatherService.getWeatherData(query = "$latitude,$longitude")
+        return if (response.isSuccessful) response.body() else null
     }
 }

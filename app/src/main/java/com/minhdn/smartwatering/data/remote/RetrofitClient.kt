@@ -16,4 +16,6 @@ object RetrofitClient {
         }
         return retrofit!!
     }
+
+    fun getWeatherService(): WeatherService = getClient().create(WeatherService::class.java)
 }
