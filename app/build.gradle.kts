@@ -41,6 +41,10 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
+    defaultConfig {
+        buildConfigField("String", "OPEN_WEATHER_API_KEY", "\"${"ce3479c50dbe43008e281338241711"}\"")
+    }
 }
 
 dependencies {
@@ -65,6 +69,16 @@ dependencies {
     // dimen
     implementation(libs.sdp)
     implementation(libs.ssp)
+
+    // retrofit
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.gson)
+
+    // play service location
+    implementation(libs.play.services.location)
+
+    //swipe refresh layout
+    implementation(libs.swipeRefreshLayout)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
