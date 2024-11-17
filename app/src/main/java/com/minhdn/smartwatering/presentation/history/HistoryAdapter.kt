@@ -44,7 +44,6 @@ class HistoryAdapter : ListAdapter<HistoryEntity, HistoryAdapter.HistoryViewHold
     }
 
     override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
-        Log.d("myptl", "onBindViewHolder: $position")
         holder.bind(getItem(position))
     }
 }
