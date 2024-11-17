@@ -4,20 +4,21 @@ import android.content.Context
 import com.google.gson.Gson
 import com.minhdn.smartwatering.data.model.CurrentLocation
 
-class SharedPreferencesHelper(context: Context, private val gson: Gson) {
+class SharedPreferencesHelper(context: Context) {
 
     private val sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+    private val gson = Gson()
 
     companion object {
-        const val PREFS_NAME = "weather_prefs"
+        const val PREFS_NAME = "smart_watering_prefs"
         const val KEY_CURRENT_LOCATION = "current_location"
 
         @Volatile
         private var INSTANCE: SharedPreferencesHelper? = null
 
-        fun getInstance(context: Context, gson: Gson): SharedPreferencesHelper {
+        fun getInstance(context: Context): SharedPreferencesHelper {
             return INSTANCE ?: synchronized(this) {
-                INSTANCE ?: SharedPreferencesHelper(context, gson).also { INSTANCE = it }
+                INSTANCE ?: SharedPreferencesHelper(context).also { INSTANCE = it }
             }
         }
     }

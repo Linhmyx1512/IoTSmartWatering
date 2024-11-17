@@ -68,6 +68,8 @@ class WeatherFragment : Fragment() {
         }
     }
 
+    private var isInitialLocationSet: Boolean = false
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -78,17 +80,28 @@ class WeatherFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val weatherDataRepository = WeatherDataRepository()
+        val weatherService = RetrofitClient.getWeatherService()
         weatherViewModel = ViewModelProvider(
             this,
-            WeatherViewModel.provideFactory(weatherDataRepository)
+            WeatherViewModel.provideFactory(weatherService)
         )[WeatherViewModel::class.java]
 
-        sharedPrefHelper = SharedPreferencesHelper.getInstance(requireContext(), Gson())
+        sharedPrefHelper = SharedPreferencesHelper.getInstance(requireContext())
 
         setWeatherDataAdapter()
-        setWeatherData(currentLocation = sharedPrefHelper.getCurrentLocation())
         setObservers()
+        setListeners()
+
+        if (!isInitialLocationSet) {
+            setCurrentLocation(currentLocation = sharedPrefHelper.getCurrentLocation())
+            isInitialLocationSet = true
+        }
+    }
+
+    private fun setListeners() {
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            setCurrentLocation(sharedPrefHelper.getCurrentLocation())
+        }
     }
 
     private fun setObservers() {
@@ -101,10 +114,27 @@ class WeatherFragment : Fragment() {
                 currentLocationDataState.currentLocation?.let { currentLocation ->
                     hideLoading()
                     sharedPrefHelper.saveCurrentLocation(currentLocation)
-                    setWeatherData(currentLocation)
+                    setCurrentLocation(currentLocation)
                 }
                 currentLocationDataState.errorMessage?.let { errorMessage ->
                     hideLoading()
+                    Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            weatherData.observe(viewLifecycleOwner) {
+                val weatherDataState = it ?: return@observe
+                binding.swipeRefreshLayout.isRefreshing = weatherDataState.isLoading
+                weatherDataState.weatherData?.let { weatherData ->
+                    Log.d("WeatherFragment", "Weather: $weatherData")
+                    weatherDataAdapter.setCurrentWeather(weatherData)
+                }
+                Log.d("WeatherFragment", "Forecast: ${weatherDataState.forecast}")
+                weatherDataState.forecast?.let { forecast ->
+                    Log.d("WeatherFragment", "Forecast: $forecast")
+                    weatherDataAdapter.setForecastData(forecast)
+                }
+                weatherDataState.errorMessage?.let { errorMessage ->
                     Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
                 }
             }
@@ -112,13 +142,15 @@ class WeatherFragment : Fragment() {
     }
 
     private fun setWeatherDataAdapter() {
+        binding.rvWeatherData.itemAnimator = null
         binding.rvWeatherData.adapter = weatherDataAdapter
     }
 
-    private fun setWeatherData(currentLocation: CurrentLocation? = null) {
-        weatherDataAdapter.setData(data = listOf(
-            currentLocation ?: CurrentLocation()
-        ))
+    private fun setCurrentLocation(currentLocation: CurrentLocation? = null) {
+        weatherDataAdapter.setCurrentLocation(currentLocation ?: CurrentLocation())
+        currentLocation?.let {
+            getWeatherData(it)
+        }
     }
 
     private fun getCurrentLocation() {
@@ -163,6 +195,7 @@ class WeatherFragment : Fragment() {
     private fun showLoading() {
         with(binding) {
             rvWeatherData.visibility = View.GONE
+            swipeRefreshLayout.isEnabled = false
             swipeRefreshLayout.isRefreshing = true
         }
     }
@@ -170,7 +203,17 @@ class WeatherFragment : Fragment() {
     private fun hideLoading() {
         with(binding) {
             rvWeatherData.visibility = View.VISIBLE
+            swipeRefreshLayout.isEnabled = true
             swipeRefreshLayout.isRefreshing = false
+        }
+    }
+
+    private fun getWeatherData(currentLocation: CurrentLocation) {
+        if (currentLocation.latitude != null && currentLocation.longitude != null) {
+            weatherViewModel.getWeatherData(
+                latitude = currentLocation.latitude,
+                longitude = currentLocation.longitude
+            )
         }
     }
 }

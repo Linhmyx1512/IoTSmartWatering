@@ -80,6 +80,9 @@ dependencies {
     //swipe refresh layout
     implementation(libs.swipeRefreshLayout)
 
+    //coil
+    implementation(libs.coil)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

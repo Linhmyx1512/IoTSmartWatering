@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="@dimen/_16sdp"
+    app:cardBackgroundColor="@color/white"
+    android:layout_marginBottom="@dimen/_16sdp"
+    app:cardCornerRadius="@dimen/_4sdp"
+    app:cardElevation="0dp"
+    app:strokeColor="#757575"
+    app:strokeWidth="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_16sdp">
+        
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:minHeight="@dimen/_80sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+        
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_temperature"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            app:layout_constraintStart_toEndOf="@id/iv_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/iv_icon"
+            app:layout_constraintTop_toTopOf="@id/iv_icon"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:gravity="center"
+            android:textSize="@dimen/_48ssp"
+            android:textStyle="bold"
+            android:text="27\u2103"/>
+        
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_wind"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@id/card_humidity"
+            app:layout_constraintTop_toBottomOf="@id/iv_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/iv_icon"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            app:cardBackgroundColor="#F5F5F8"
+            app:strokeWidth="1dp"
+            app:strokeColor="#757575"
+            app:cardCornerRadius="@dimen/_4sdp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/_4sdp">
+                
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/_22sdp"
+                    android:layout_height="@dimen/_22sdp"
+                    android:src="@drawable/ic_air"/>
+                
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/wind"
+                    android:textColor="#757575"
+                    android:textSize="@dimen/_10ssp"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_wind"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#212121"
+                    android:textSize="@dimen/_13ssp"
+                    android:textStyle="bold"
+                    android:text="15 km/h"/>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_humidity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            app:layout_constraintEnd_toStartOf="@id/card_chance_of_rain"
+            app:layout_constraintTop_toBottomOf="@id/iv_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/card_wind"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            app:cardBackgroundColor="#F5F5F8"
+            app:strokeWidth="1dp"
+            app:strokeColor="#757575"
+            app:cardCornerRadius="@dimen/_4sdp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/_4sdp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/_22sdp"
+                    android:layout_height="@dimen/_22sdp"
+                    android:src="@drawable/ic_humidity"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/humidity"
+                    android:textColor="#757575"
+                    android:textSize="@dimen/_10ssp"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_humidity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#212121"
+                    android:textSize="@dimen/_13ssp"
+                    android:textStyle="bold"
+                    android:text="24%"/>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_chance_of_rain"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            app:layout_constraintTop_toBottomOf="@id/iv_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/card_humidity"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/_16sdp"
+            app:cardBackgroundColor="#F5F5F8"
+            app:strokeWidth="1dp"
+            app:strokeColor="#757575"
+            app:cardCornerRadius="@dimen/_4sdp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/_4sdp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/_22sdp"
+                    android:layout_height="@dimen/_22sdp"
+                    android:src="@drawable/rainy_24px"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/chance_of_rain"
+                    android:textColor="#757575"
+                    android:textSize="@dimen/_10ssp"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_chance_of_rain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#212121"
+                    android:textSize="@dimen/_13ssp"
+                    android:textStyle="bold"
+                    android:text="76%"/>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
