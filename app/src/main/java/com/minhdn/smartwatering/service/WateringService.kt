@@ -69,7 +69,6 @@ class WateringService : Service() {
     private fun regisData() {
         getDatabaseReference(IS_PUMP_ON).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                Log.d("myptl", "Firebase listener: ${snapshot.value}")
                 if (snapshot.value == true) {
                     coroutineScope?.launch {
                         pushNotification()
@@ -79,7 +78,6 @@ class WateringService : Service() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Log.e("myptl", "Firebase listener cancelled: ${error.message}")
             }
         })
     }

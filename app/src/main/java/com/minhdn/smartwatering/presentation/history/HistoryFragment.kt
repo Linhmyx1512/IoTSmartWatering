@@ -43,7 +43,6 @@ class HistoryFragment : Fragment() {
     private fun observeViewModel() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.histories.collect { histories ->
-                Log.d("myptl", "observeViewModel: $histories")
                 adapter.submitList(histories)
             }
         }
