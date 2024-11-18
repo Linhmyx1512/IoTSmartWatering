@@ -8,5 +8,7 @@
     <string name="wind">Wind</string>
     <string name="humidity">Humidity</string>
     <string name="chance_of_rain">Chance of rain</string>
+    <string name="title_reminder_watering">⏰ Đến Giờ Tưới Cây Rồi! 🌱</string>
+    <string name="content_reminder_watering">Đã đến thời gian bạn đặt lịch để tưới cây. Hãy chăm sóc cây luôn tươi tốt nhé! 🌿</string>
 
 </resources>

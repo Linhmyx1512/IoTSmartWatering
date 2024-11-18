@@ -26,6 +26,10 @@ class NotificationFactory(private val context: Context) {
             is NotificationType.AutoWatering -> {
                 createStartPumpNotification(notificationType)
             }
+
+            is NotificationType.Reminder -> {
+                createReminderNotification(notificationType)
+            }
         }
     }
 
@@ -47,6 +51,46 @@ class NotificationFactory(private val context: Context) {
             .setCustomHeadsUpContentView(remoteView)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setShowWhen(false)
+            .setAutoCancel(true)
+            .setDefaults(NotificationCompat.DEFAULT_ALL)
+            .setContentIntent(
+                PendingIntent.getActivity(
+                    context,
+                    0,
+                    Intent(context, MainActivity::class.java).apply {
+                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    },
+                    PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+                )
+            )
+            .setStyle(NotificationCompat.DecoratedCustomViewStyle())
+
+        createNotificationChannelIfNeed(notification)
+
+        notificationManager.notify(
+            notificationType.notificationId,
+            notification.build()
+        )
+    }
+
+    private fun createReminderNotification(notificationType: NotificationType) {
+        val remoteView = RemoteViews(context.packageName, R.layout.layout_notification)
+
+        remoteView.apply {
+            setTextViewText(R.id.tvTitle, context.getString(R.string.title_reminder_watering))
+            setTextViewText(
+                R.id.tvContent,
+                context.getString(R.string.content_reminder_watering)
+            )
+        }
+
+        val notification = NotificationCompat.Builder(context, NOTIFICATION_CHANNEL)
+            .setSmallIcon(R.drawable.ic_launcher_foreground)
+            .setContentTitle(context.getString(R.string.app_name))
+            .setCustomContentView(remoteView)
+            .setCustomHeadsUpContentView(remoteView)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setCategory(NotificationCompat.CATEGORY_ALARM)            .setShowWhen(false)
             .setAutoCancel(true)
             .setDefaults(NotificationCompat.DEFAULT_ALL)
             .setContentIntent(

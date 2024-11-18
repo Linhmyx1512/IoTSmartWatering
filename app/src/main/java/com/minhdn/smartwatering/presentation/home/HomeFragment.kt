@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.minhdn.smartwatering.R
 import com.minhdn.smartwatering.databinding.FragmentHomeBinding
+import com.minhdn.smartwatering.utils.updateSwitch
 import kotlinx.coroutines.launch
 
 
@@ -69,11 +70,7 @@ class HomeFragment : Fragment() {
 
     private fun updateSwitch(isOn: Boolean) {
         binding.swAutoWatering.apply {
-            trackTintList = if (isOn) {
-                ContextCompat.getColorStateList(requireContext(), R.color.main_color)
-            } else {
-                ContextCompat.getColorStateList(requireContext(), R.color.gray)
-            }
+            updateSwitch(isOn)
         }
     }
 

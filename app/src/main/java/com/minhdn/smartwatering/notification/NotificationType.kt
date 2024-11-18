@@ -13,4 +13,11 @@ sealed class NotificationType(
             const val AUTO_WATERING_NOTIFICATION_ID = 15001
         }
     }
+
+    @Parcelize
+    class Reminder : NotificationType(REMINDER_NOTIFICATION_ID) {
+        companion object {
+            const val REMINDER_NOTIFICATION_ID = 15002
+        }
+    }
 }
