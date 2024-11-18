@@ -1,10 +1,11 @@
-package com.minhdn.smartwatering
+package com.minhdn.smartwatering.reminder
 
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import com.minhdn.smartwatering.broadcast.ReminderReceiver
+import com.minhdn.smartwatering.utils.Constants.KEY_REMINDER_ID
 import java.util.Calendar
 
 class ReminderFactory(private val context: Context) {
@@ -58,7 +59,9 @@ class ReminderFactory(private val context: Context) {
             return
         }
 
-        val intent = Intent(context, ReminderReceiver::class.java)
+        val intent = Intent(context, ReminderReceiver::class.java).apply {
+            putExtra(KEY_REMINDER_ID, REMINDER_ID)
+        }
 
         val calendar = Calendar.getInstance().apply {
             timeInMillis = System.currentTimeMillis()
@@ -83,7 +86,9 @@ class ReminderFactory(private val context: Context) {
 
 
     private fun handleReminderWeekly(hour: Int, minute: Int) {
-        val intent = Intent(context, ReminderReceiver::class.java)
+        val intent = Intent(context, ReminderReceiver::class.java).apply {
+            putExtra(KEY_REMINDER_ID, REMINDER_ID)
+        }
 
         val calendar = Calendar.getInstance().apply {
             set(Calendar.HOUR_OF_DAY, hour)

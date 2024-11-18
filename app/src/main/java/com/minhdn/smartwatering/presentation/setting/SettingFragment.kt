@@ -1,18 +1,17 @@
 package com.minhdn.smartwatering.presentation.setting
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.minhdn.smartwatering.R
-import com.minhdn.smartwatering.ReminderFactory
 import com.minhdn.smartwatering.data.prefs.SharedPreferencesHelper
 import com.minhdn.smartwatering.databinding.FragmentSettingBinding
+import com.minhdn.smartwatering.reminder.ReminderFactory
+import com.minhdn.smartwatering.utils.updateSwitch
 import kotlinx.coroutines.launch
 
 class SettingFragment : Fragment() {
@@ -43,23 +42,37 @@ class SettingFragment : Fragment() {
             minValue = 0
             maxValue = 23
             wrapSelectorWheel = true
+            value = SharedPreferencesHelper.getInstance(requireContext()).getHourReminder()
         }
 
         binding.npMinute.apply {
             minValue = 0
             maxValue = 59
             wrapSelectorWheel = true
+            value = SharedPreferencesHelper.getInstance(requireContext()).getMinuteReminder()
         }
 
         binding.sbAlarm.apply {
-            setOnCheckedChangeListener { _, isChecked ->
-                trackTintList = if (isChecked) {
-                    ContextCompat.getColorStateList(requireContext(), R.color.main_color)
-                } else {
-                    ContextCompat.getColorStateList(requireContext(), R.color.gray)
-                }
+            isChecked = SharedPreferencesHelper.getInstance(requireContext()).getIsAlarm()
+            updateSwitch(isChecked)
+        }
 
+        binding.sbEveryday.apply {
+            isChecked = SharedPreferencesHelper.getInstance(requireContext()).getIsEveryday()
+            updateSwitch(isChecked)
+        }
+    }
+
+    private fun initListeners() {
+        binding.sbAlarm.apply {
+            setOnCheckedChangeListener { _, isChecked ->
+                updateSwitch(isChecked)
+                SharedPreferencesHelper.getInstance(requireContext()).setIsAlarm(isChecked)
                 if (isChecked) {
+                    SharedPreferencesHelper.getInstance(requireContext())
+                        .setHourReminder(binding.npHour.value)
+                    SharedPreferencesHelper.getInstance(requireContext())
+                        .setMinuteReminder(binding.npMinute.value)
                     ReminderFactory(requireContext()).pushReminder(
                         binding.sbEveryday.isChecked,
                         binding.npHour.value,
@@ -73,11 +86,7 @@ class SettingFragment : Fragment() {
 
         binding.sbEveryday.apply {
             setOnCheckedChangeListener { _, isChecked ->
-                trackTintList = if (isChecked) {
-                    ContextCompat.getColorStateList(requireContext(), R.color.main_color)
-                } else {
-                    ContextCompat.getColorStateList(requireContext(), R.color.gray)
-                }
+                updateSwitch(isChecked)
                 if (binding.sbAlarm.isChecked) {
                     ReminderFactory(requireContext()).updateReminder(
                         isChecked,
@@ -85,11 +94,10 @@ class SettingFragment : Fragment() {
                         binding.npMinute.value
                     )
                 }
+                SharedPreferencesHelper.getInstance(requireContext()).setIsEveryday(isChecked)
             }
         }
-    }
 
-    private fun initListeners() {
         binding.btnSave.setOnClickListener {
             val upperTemperature = binding.edtTemperatureUpper.text.toString().toFloat()
             val lowerTemperature = binding.edtTemperatureLower.text.toString().toFloat()

@@ -14,6 +14,9 @@ object Constants {
     const val LOWER_SOIL_MOISTURE_THRESHOLD = "soil_moisture_lower_threshold"
 
     // reminder
-    const val REMINDER_ID = "reminder_id"
+    const val KEY_REMINDER_ID = "KEY_REMINDER_ID"
     const val KEY_IS_ALARM = "KEY_IS_ALARM"
+    const val KEY_IS_EVERYDAY = "KEY_IS_EVERYDAY"
+    const val KEY_HOUR = "KEY_HOUR"
+    const val KEY_MINUTE = "KEY_MINUTE"
 }
