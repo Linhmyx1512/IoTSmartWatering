@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="History"
-        android:textColor="@color/white"
+        android:textColor="#374151"
         android:textSize="@dimen/_16ssp"
         android:textStyle="bold"
         tools:ignore="HardcodedText" />
