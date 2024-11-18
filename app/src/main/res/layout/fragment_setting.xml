@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,137 +10,141 @@
     android:paddingTop="@dimen/_16sdp"
     tools:context=".presentation.setting.SettingFragment">
 
-    <LinearLayout
-        android:id="@+id/llConfigThreshold"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_rounded_8"
-        android:backgroundTint="#a1c4fd"
-        android:orientation="vertical"
-        android:paddingHorizontal="@dimen/_16sdp"
-        android:paddingVertical="@dimen/_10sdp"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.AppCompatTextView
+        <LinearLayout
+            android:id="@+id/llConfigThreshold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Config Threshold"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_16ssp"
-            android:textStyle="bold"
-            tools:ignore="HardcodedText" />
+            android:background="@drawable/bg_rounded_8"
+            android:backgroundTint="#a1c4fd"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/_16sdp"
+            android:paddingVertical="@dimen/_10sdp"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_6sdp"
-            android:text="Upper Temperature Threshold"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_12ssp"
-            tools:ignore="HardcodedText" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Config Threshold"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16ssp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edtTemperatureUpper"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_2sdp"
-            android:background="@drawable/bg_rounded_data"
-            android:backgroundTint="@color/white"
-            android:inputType="numberDecimal"
-            android:paddingHorizontal="@dimen/_12sdp"
-            android:paddingVertical="@dimen/_8sdp"
-            android:singleLine="true"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_12ssp"
-            tools:text="27" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:text="Upper Temperature Threshold"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                tools:ignore="HardcodedText" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_6sdp"
-            android:text="Lower Temperature Threshold"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_12ssp"
-            tools:ignore="HardcodedText" />
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edtTemperatureUpper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:background="@drawable/bg_rounded_data"
+                android:backgroundTint="@color/white"
+                android:inputType="numberDecimal"
+                android:paddingHorizontal="@dimen/_12sdp"
+                android:paddingVertical="@dimen/_8sdp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                tools:text="27" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edtTemperatureLower"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_2sdp"
-            android:background="@drawable/bg_rounded_data"
-            android:backgroundTint="@color/white"
-            android:inputType="numberDecimal"
-            android:paddingHorizontal="@dimen/_12sdp"
-            android:paddingVertical="@dimen/_8sdp"
-            android:singleLine="true"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_12ssp"
-            tools:text="27" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:text="Lower Temperature Threshold"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                tools:ignore="HardcodedText" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_6sdp"
-            android:text="Upper SoilMoisture Threshold"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_12ssp"
-            tools:ignore="HardcodedText" />
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edtTemperatureLower"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:background="@drawable/bg_rounded_data"
+                android:backgroundTint="@color/white"
+                android:inputType="numberDecimal"
+                android:paddingHorizontal="@dimen/_12sdp"
+                android:paddingVertical="@dimen/_8sdp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                tools:text="27" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edtSoilMoistureUpper"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_2sdp"
-            android:background="@drawable/bg_rounded_data"
-            android:backgroundTint="@color/white"
-            android:inputType="numberDecimal"
-            android:paddingHorizontal="@dimen/_12sdp"
-            android:paddingVertical="@dimen/_8sdp"
-            android:singleLine="true"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_12ssp"
-            tools:text="27" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:text="Upper SoilMoisture Threshold"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                tools:ignore="HardcodedText" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_6sdp"
-            android:text="Lower SoilMoisture Threshold"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_12ssp"
-            tools:ignore="HardcodedText" />
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edtSoilMoistureUpper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:background="@drawable/bg_rounded_data"
+                android:backgroundTint="@color/white"
+                android:inputType="numberDecimal"
+                android:paddingHorizontal="@dimen/_12sdp"
+                android:paddingVertical="@dimen/_8sdp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                tools:text="27" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edtSoilMoistureLower"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_2sdp"
-            android:background="@drawable/bg_rounded_data"
-            android:backgroundTint="@color/white"
-            android:inputType="numberDecimal"
-            android:paddingHorizontal="@dimen/_12sdp"
-            android:paddingVertical="@dimen/_8sdp"
-            android:singleLine="true"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_12ssp"
-            tools:text="27" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:text="Lower SoilMoisture Threshold"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                tools:ignore="HardcodedText" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnSave"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_12sdp"
-            android:background="@drawable/bg_rounded_data"
-            android:backgroundTint="#29EF4F"
-            android:text="Save"
-            android:textAllCaps="false"
-            android:textSize="@dimen/_16ssp"
-            tools:ignore="HardcodedText" />
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edtSoilMoistureLower"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:background="@drawable/bg_rounded_data"
+                android:backgroundTint="@color/white"
+                android:inputType="numberDecimal"
+                android:paddingHorizontal="@dimen/_12sdp"
+                android:paddingVertical="@dimen/_8sdp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                tools:text="27" />
 
-    </LinearLayout>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:background="@drawable/bg_rounded_data"
+                android:backgroundTint="#29EF4F"
+                android:text="Save"
+                android:textAllCaps="false"
+                android:textSize="@dimen/_16ssp"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
 
     <LinearLayout
         android:id="@+id/llReminder"
@@ -153,103 +158,140 @@
         android:paddingVertical="@dimen/_10sdp"
         app:layout_constraintTop_toBottomOf="@id/llConfigThreshold">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Reminder"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_16ssp"
-            android:textStyle="bold"
-            tools:ignore="HardcodedText" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Set alarm"
+                android:gravity="center"
+                android:text="Schedule Auto Watering"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_12ssp"
+                android:textSize="@dimen/_16ssp"
+                android:textStyle="bold"
                 tools:ignore="HardcodedText" />
 
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/sbAlarm"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                app:thumbTint="@color/white"
-                app:trackTint="#29EF4F" />
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Set alarm"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp"
+                    tools:ignore="HardcodedText" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/sbAlarm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    app:thumbTint="@color/white"
+                    app:trackTint="#29EF4F" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Schedule everyday"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp"
+                    tools:ignore="HardcodedText" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/sbEveryday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    app:thumbTint="@color/white"
+                    app:trackTint="#29EF4F" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_8sdp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:text="Duration (Minutes)"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp"
+                    tools:ignore="HardcodedText" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edtDuration"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@drawable/bg_rounded_data"
+                    android:backgroundTint="@color/white"
+                    android:inputType="numberDecimal"
+                    android:paddingHorizontal="@dimen/_12sdp"
+                    android:paddingVertical="@dimen/_4sdp"
+                    android:singleLine="true"
+                    android:maxLength="2"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp"
+                    tools:text="27" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:text="Time"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp"
+                    tools:ignore="HardcodedText" />
+
+                <NumberPicker
+                    android:id="@+id/npHour"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_56sdp"
+                    android:layout_weight="1"
+                    android:selectionDividerHeight="0dp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text=":"
+                    android:textSize="@dimen/_12ssp"
+                    tools:ignore="HardcodedText" />
+
+                <NumberPicker
+                    android:id="@+id/npMinute"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_56sdp"
+                    android:layout_weight="1"
+                    android:selectionDividerHeight="0dp" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Schedule everyday"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_12ssp"
-                tools:ignore="HardcodedText" />
-
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/sbEveryday"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                app:thumbTint="@color/white"
-                app:trackTint="#29EF4F" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4"
-                android:text="Time"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_12ssp"
-                tools:ignore="HardcodedText" />
-
-            <NumberPicker
-                android:id="@+id/npHour"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/_56sdp"
-                android:layout_weight="1"
-                android:selectionDividerHeight="0dp" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text=":"
-                android:textSize="@dimen/_12ssp"
-                tools:ignore="HardcodedText" />
-
-            <NumberPicker
-                android:id="@+id/npMinute"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/_56sdp"
-                android:layout_weight="1"
-                android:selectionDividerHeight="0dp" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
