@@ -1,154 +1,443 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
     android:padding="16dp"
-    tools:context=".presentation.home.HomeFragment">
+    tools:context=".presentation.home.HomeFragment"
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/llHumidity"
-        android:layout_width="wrap_content"
+<!--    <LinearLayout-->
+<!--        android:id="@+id/llHumidity"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@drawable/bg_rounded_data"-->
+<!--        android:backgroundTint="@color/blue"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:padding="16dp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
+
+<!--        <androidx.appcompat.widget.AppCompatTextView-->
+<!--            android:id="@+id/tvTitleHumidity"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Humidity: "-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="20sp"-->
+<!--            android:textStyle="bold"-->
+<!--            tools:ignore="HardcodedText" />-->
+
+<!--        <androidx.appcompat.widget.AppCompatTextView-->
+<!--            android:id="@+id/tvHumidity"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="20sp"-->
+<!--            android:textStyle="bold"-->
+<!--            tools:text="40%" />-->
+
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/llTemperature"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="24dp"-->
+<!--        android:background="@drawable/bg_rounded_data"-->
+<!--        android:backgroundTint="@color/reed"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:padding="16dp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/llHumidity">-->
+
+<!--        <androidx.appcompat.widget.AppCompatTextView-->
+<!--            android:id="@+id/tvTitleTemperature"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Temperature: "-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="20sp"-->
+<!--            android:textStyle="bold"-->
+<!--            tools:ignore="HardcodedText" />-->
+
+<!--        <androidx.appcompat.widget.AppCompatTextView-->
+<!--            android:id="@+id/tvTemperature"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="20sp"-->
+<!--            android:textStyle="bold"-->
+<!--            tools:text="29" />-->
+
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/llSoilMoisture"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="24dp"-->
+<!--        android:background="@drawable/bg_rounded_data"-->
+<!--        android:backgroundTint="@color/orange"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:padding="16dp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/llTemperature">-->
+
+<!--        <androidx.appcompat.widget.AppCompatTextView-->
+<!--            android:id="@+id/tvTitleSoilMoisture"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Soil Moisture: "-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="20sp"-->
+<!--            android:textStyle="bold"-->
+<!--            tools:ignore="HardcodedText" />-->
+
+<!--        <androidx.appcompat.widget.AppCompatTextView-->
+<!--            android:id="@+id/tvSoilMoisture"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="20sp"-->
+<!--            android:textStyle="bold"-->
+<!--            tools:text="20%" />-->
+
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/llAutoWatering"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="50dp"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:padding="16dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/llSoilMoisture">-->
+
+<!--        <androidx.appcompat.widget.AppCompatTextView-->
+<!--            android:id="@+id/tvAutoWatering"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Auto: "-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="20sp"-->
+<!--            android:textStyle="bold" />-->
+
+<!--        <androidx.appcompat.widget.SwitchCompat-->
+<!--            android:id="@+id/swAutoWatering"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layoutDirection="ltr"-->
+<!--            app:thumbTint="@color/white"-->
+<!--            app:trackTint="@color/main_color" />-->
+
+<!--    </LinearLayout>-->
+
+
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/tvPump"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="50dp"-->
+<!--        android:text="Pump"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/llAutoWatering" />-->
+
+
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/tvTurnOnOff"-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:background="@drawable/bg_rounded_on_off"-->
+<!--        android:backgroundTint="@color/main_color"-->
+<!--        android:gravity="center"-->
+<!--        android:padding="16dp"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tvPump"-->
+<!--        tools:text="ON" />-->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_temperature"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_rounded_data"
-        android:backgroundTint="@color/blue"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_marginTop="@dimen/_16sdp"
+        app:cardBackgroundColor="#FEFEFE"
+        app:cardElevation="@dimen/_2sdp"
+        app:cardCornerRadius="@dimen/_8sdp">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvTitleHumidity"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Humidity: "
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            tools:ignore="HardcodedText" />
+            android:layout_marginVertical="@dimen/_16sdp"
+            android:layout_marginHorizontal="@dimen/_12sdp">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvHumidity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            tools:text="40%" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_icon_temperature"
+                android:layout_width="@dimen/_22sdp"
+                android:layout_height="@dimen/_22sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="@dimen/_8sdp"
+                app:srcCompat="@drawable/ic_temperature"/>
 
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/llTemperature"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="@dimen/_14sdp"
+                android:orientation="vertical"
+                app:layout_constraintStart_toEndOf="@id/iv_icon_temperature"
+                app:layout_constraintEnd_toEndOf="parent">
 
-    <LinearLayout
-        android:id="@+id/llTemperature"
-        android:layout_width="wrap_content"
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textSize="@dimen/_13ssp"
+                    android:text="@string/temperature"
+                    android:textStyle="bold"
+                    android:textColor="#374151"
+                    android:layout_marginBottom="@dimen/_4sdp"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_temperature"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textSize="@dimen/_18ssp"
+                    android:textStyle="bold"
+                    android:text="27\u2103"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_humidity"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/bg_rounded_data"
-        android:backgroundTint="@color/reed"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/llHumidity">
+        android:layout_marginTop="@dimen/_16sdp"
+        app:cardBackgroundColor="#FEFEFE"
+        app:cardElevation="@dimen/_2sdp"
+        app:cardCornerRadius="@dimen/_8sdp">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvTitleTemperature"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Temperature: "
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            tools:ignore="HardcodedText" />
+            android:layout_marginVertical="@dimen/_16sdp"
+            android:layout_marginHorizontal="@dimen/_12sdp">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvTemperature"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            tools:text="29" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_icon_humidity"
+                android:layout_width="@dimen/_22sdp"
+                android:layout_height="@dimen/_22sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="@dimen/_8sdp"
+                app:srcCompat="@drawable/ic_blue_humidity"/>
 
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/llHumidity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="@dimen/_14sdp"
+                android:orientation="vertical"
+                app:layout_constraintStart_toEndOf="@id/iv_icon_humidity"
+                app:layout_constraintEnd_toEndOf="parent">
 
-    <LinearLayout
-        android:id="@+id/llSoilMoisture"
-        android:layout_width="wrap_content"
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textSize="@dimen/_13ssp"
+                    android:text="Humidity"
+                    android:textStyle="bold"
+                    android:textColor="#374151"
+                    android:layout_marginBottom="@dimen/_4sdp"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_humidity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textSize="@dimen/_18ssp"
+                    android:textStyle="bold"
+                    android:text="69%"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_soil_moisture"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/bg_rounded_data"
-        android:backgroundTint="@color/orange"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/llTemperature">
+        android:layout_marginTop="@dimen/_16sdp"
+        app:cardBackgroundColor="#FEFEFE"
+        app:cardElevation="@dimen/_2sdp"
+        app:cardCornerRadius="@dimen/_8sdp">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvTitleSoilMoisture"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Soil Moisture: "
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            tools:ignore="HardcodedText" />
+            android:layout_marginVertical="@dimen/_16sdp"
+            android:layout_marginHorizontal="@dimen/_12sdp">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvSoilMoisture"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            tools:text="20%" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_icon_soil_moisture"
+                android:layout_width="@dimen/_22sdp"
+                android:layout_height="@dimen/_22sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="@dimen/_8sdp"
+                app:srcCompat="@drawable/ic_soil_moisture"/>
 
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/llSoilMoisture"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="@dimen/_14sdp"
+                android:orientation="vertical"
+                app:layout_constraintStart_toEndOf="@id/iv_icon_soil_moisture"
+                app:layout_constraintEnd_toEndOf="parent">
 
-    <LinearLayout
-        android:id="@+id/llAutoWatering"
-        android:layout_width="wrap_content"
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_soil_moisture"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textSize="@dimen/_13ssp"
+                    android:text="@string/soil_moisture"
+                    android:textStyle="bold"
+                    android:textColor="#374151"
+                    android:layout_marginBottom="@dimen/_4sdp"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textSize="@dimen/_18ssp"
+                    android:textStyle="bold"
+                    android:text="59%"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_auto_mode"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/llSoilMoisture">
+        android:layout_marginTop="@dimen/_16sdp"
+        app:cardBackgroundColor="#FEFEFE"
+        app:cardElevation="@dimen/_2sdp"
+        app:cardCornerRadius="@dimen/_8sdp">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvAutoWatering"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Auto: "
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:layout_marginVertical="@dimen/_16sdp"
+            android:layout_marginHorizontal="@dimen/_12sdp">
 
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/swAutoWatering"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layoutDirection="ltr"
-            app:thumbTint="@color/white"
-            app:trackTint="@color/main_color" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_icon_drop"
+                android:layout_width="@dimen/_22sdp"
+                android:layout_height="@dimen/_22sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/ic_humidity"
+                android:tint="#3779E5"/>
 
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/llAutoMode"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="@dimen/_14sdp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toEndOf="@id/iv_icon_drop"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:gravity="center_vertical">
 
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textSize="@dimen/_13ssp"
+                    android:text="@string/auto_mode"
+                    android:textStyle="bold"
+                    android:textColor="#374151"
+                    android:layout_weight="3"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="@dimen/_4sdp"/>
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/swAutoWatering"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layoutDirection="ltr"
+                    app:thumbTint="@color/white"
+                    app:trackTint="@color/main_color" />
+
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvPump"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="@dimen/_12sdp"
         android:text="Pump"
-        android:textColor="@color/white"
+        android:textColor="#374151"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/llAutoWatering" />
+        android:layout_gravity="center_horizontal"/>
 
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -163,9 +452,7 @@
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvPump"
+        android:layout_gravity="center_horizontal"
         tools:text="ON" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
