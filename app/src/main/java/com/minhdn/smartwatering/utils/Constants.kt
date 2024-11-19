@@ -19,4 +19,5 @@ object Constants {
     const val KEY_IS_EVERYDAY = "KEY_IS_EVERYDAY"
     const val KEY_HOUR = "KEY_HOUR"
     const val KEY_MINUTE = "KEY_MINUTE"
+    const val KEY_DURATION = "KEY_DURATION"
 }

@@ -67,4 +67,12 @@ class SharedPreferencesHelper(context: Context) {
     fun setMinuteReminder(minute: Int) {
         sharedPreferences.edit().putInt(Constants.KEY_MINUTE, minute).apply()
     }
+
+    fun setDurationReminder(duration: Int) {
+        sharedPreferences.edit().putInt(Constants.KEY_DURATION, duration).apply()
+    }
+
+    fun getDurationReminder(): Int {
+        return sharedPreferences.getInt(Constants.KEY_DURATION, 0)
+    }
 }

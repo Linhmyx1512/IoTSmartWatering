@@ -38,6 +38,10 @@ class SettingFragment : Fragment() {
     }
 
     private fun initUI() {
+        binding.edtDuration.setText(
+            SharedPreferencesHelper.getInstance(requireContext()).getDurationReminder().toString()
+        )
+
         binding.npHour.apply {
             minValue = 0
             maxValue = 23
@@ -65,7 +69,17 @@ class SettingFragment : Fragment() {
 
     private fun initListeners() {
         binding.sbAlarm.apply {
-            setOnCheckedChangeListener { _, isChecked ->
+            setOnClickListener {
+                if (binding.edtDuration.text.toString() == "0") {
+                    isChecked = false
+                    Toast.makeText(
+                        requireContext(),
+                        "Please enter duration valid",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    return@setOnClickListener
+                }
+
                 updateSwitch(isChecked)
                 SharedPreferencesHelper.getInstance(requireContext()).setIsAlarm(isChecked)
                 if (isChecked) {
@@ -73,6 +87,8 @@ class SettingFragment : Fragment() {
                         .setHourReminder(binding.npHour.value)
                     SharedPreferencesHelper.getInstance(requireContext())
                         .setMinuteReminder(binding.npMinute.value)
+                    SharedPreferencesHelper.getInstance(requireContext())
+                        .setDurationReminder(binding.edtDuration.text.toString().toInt())
                     ReminderFactory(requireContext()).pushReminder(
                         binding.sbEveryday.isChecked,
                         binding.npHour.value,

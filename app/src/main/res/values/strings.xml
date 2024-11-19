@@ -4,14 +4,14 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="title_start_watering">🌱 Tưới Cây Tự Động 🌧️</string>
-    <string name="content_start_watering">Cây của bạn đã đạt điều kiện cần tưới! Hệ thống sẽ bắt đầu tưới nước trong vòng 1 phút nữa để đảm bảo cây được chăm sóc tốt nhất.️</string>
+    <string name="content_start_watering">Cây của bạn đã đạt điều kiện cần tưới! Hệ thống sẽ bắt đầu tưới nước để đảm bảo cây được chăm sóc tốt nhất.️</string>
     <string name="wind">Wind</string>
     <string name="humidity">Humidity</string>
     <string name="chance_of_rain">Chance of rain</string>
     <string name="temperature">Temperature</string>
     <string name="soil_moisture">Soil Moisture</string>
     <string name="auto_mode">Auto Mode</string>
-    <string name="title_reminder_watering">⏰ Đến Giờ Tưới Cây Rồi! 🌱</string>
+    <string name="title_reminder_watering">⏰ Cây của bạn sẽ được tự động tưới! 🌱</string>
     <string name="content_reminder_watering">Đã đến thời gian bạn đặt lịch để tưới cây. Hãy chăm sóc cây luôn tươi tốt nhé! 🌿</string>
 
 </resources>
