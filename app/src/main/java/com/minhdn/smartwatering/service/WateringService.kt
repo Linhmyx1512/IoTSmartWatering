@@ -17,9 +17,11 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.minhdn.smartwatering.R
+import com.minhdn.smartwatering.data.firebase.FirebaseHelper
 import com.minhdn.smartwatering.data.firebase.FirebaseHelper.getDatabaseReference
 import com.minhdn.smartwatering.data.local.entity.HistoryEntity
 import com.minhdn.smartwatering.data.local.repo.HistoryRepository
+import com.minhdn.smartwatering.data.prefs.SharedPreferencesHelper
 import com.minhdn.smartwatering.notification.NotificationFactory
 import com.minhdn.smartwatering.notification.NotificationFactory.Companion.NOTIFICATION_CHANNEL
 import com.minhdn.smartwatering.notification.NotificationType
@@ -28,6 +30,8 @@ import com.minhdn.smartwatering.utils.Constants.IS_PUMP_ON
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class WateringService : Service() {
@@ -58,6 +62,9 @@ class WateringService : Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         if (intent != null) {
             createForegroundNotification()
+            if (intent.getBooleanExtra(IS_FROM_SCHEDULE, false)) {
+                startSchedule()
+            }
         }
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
             START_NOT_STICKY
@@ -141,6 +148,15 @@ class WateringService : Service() {
         startForeground(CHANNEL_ID, notification)
     }
 
+    private fun startSchedule() {
+        val time = SharedPreferencesHelper.getInstance(this).getDurationReminder()
+        Log.d("myptl", "startSchedule: $time")
+        coroutineScope?.launch {
+            delay(time * 60000L)
+            getDatabaseReference(IS_PUMP_ON).setValue(false)
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         isRunning = false
@@ -149,6 +165,7 @@ class WateringService : Service() {
     }
 
     companion object {
+        const val IS_FROM_SCHEDULE = "is_from_schedule"
         const val CHANNEL_ID = 1
         var isRunning = false
 
